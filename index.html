@@ -44,6 +44,9 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="data/Locations_3.js"></script>
+        <script src="js/d3.js"></script>
+        <script src="js/c3.min.js"></script>
+        <script src="js/jquery.min.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -76,7 +79,7 @@
             opacity: 1.0,
             attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
             minZoom: 5,
-            maxZoom: 22,
+            maxZoom: 15,
             minNativeZoom: 0,
             maxNativeZoom: 20
         });
@@ -100,6 +103,42 @@
                                               {pane: 'pane_basemap1_m4_2'});
         bounds_group.addLayer(layer_basemap1_m4_2);
         map.addLayer(layer_basemap1_m4_2);
+        
+        // Added
+        var layer_locations = null,
+            locations = {};
+
+        Promise.all([d3.json("assets/locations.geojson")]).then(function(datasets) {
+        // 6. Map relevant operations
+        // 6.1 create a location layer
+            layer_locations = L.geoJSON(datasets[0], {
+            onEachFeature: locations_events
+            }).addTo(map);
+
+        });
+
+        function locations_events(feature, layer) {
+            layer.on({
+            // mouseover: highlightFeature1,
+            click: clickFeature,
+            // mouseout: resetHighlight
+            });
+        }
+
+        function clickFeature(e) {
+            L.DomEvent.stopPropagation(e);
+            $("#placename").text(e.target.feature.properties.Name);
+            $("#county-count").text(e.target.feature.properties.Desc);
+        }
+        
+        // 6.6 bind the onMapClick function to the mymap object.
+        map.on('click', onMapClick);
+        // when click on any place on the map expect the counties layer, the text on the sidebar will be reset to the total number of WA.
+        function onMapClick(e) {
+            $("#placename").text("Location Name");
+            $("#county-count").text("Information about the location");
+        }
+
         function pop_Locations_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -126,11 +165,7 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function clickFeature(e) {
-            L.DomEvent.stopPropagation(e);
-            $("#placename").text("County");
-            $("#county-count").text(e.target.feature.properties.CTNUM);
-        }
+
 
         function style_Locations_3_0() {
             return {

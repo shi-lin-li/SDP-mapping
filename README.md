@@ -1,1 +1,22 @@
 # SDP-mapping
+
+## Background
+
+This digital geography project is developed based on the material of the **Svoboda Diaries**. The Svoboda Diaries are a collection of diaries keeper by members of the Svoboda family, a family living in Baghdad during the 19th century. The work of this digital river map is part of Svoboda Diaries Project. The Svoboda Diaries Project began in 2006 as a project under the umbrella of the Ottoman Texts Archive Project, started in the University of Washington in 1993. The Project is an ongoing collaborative research and publication effort headed by the project Principal Investigators, Professor Walter G. Andrews, Emeritus Professor of Near Eastern Languages and Civilization and Annie T. Chen, Assistant Professor of Biomedical Informatics and Medical Education, and Nowf Abdul-Majid Allawi, our collaborating partner in Iraq. It combines the work of experienced professionals, skilled graduate students, and a large cohort of talented and committed undergraduate research interns. The students in this project are engaged in all aspects of the work. The collaborative force is composed of two teams. The UX team creating web presence and programming the project software, and the Content team transcribing, marking up the texts, and researching for notes. The goal of the project is to transform the original historical sources unsuited to traditional print publications into more accessible digital form for the audiences. At the time, the [website of Svoboda Diaries Project]() has been built, quite a few chapters of the diaries and historical research notes has been digitalized and published on the sites. In addition to the preservation of the primary source texts, innovative format of information digitalization also started to develop. One of the projects is this digital map showing Joseph Svoboda's travels along the Tigris River.
+
+## About the Digital Map
+
+### Overview
+
+The personal diaries of Joseph Svoboda were written at the turn of the 19th century, capturing over 40 years of the life, politics, and landscape of Ottoman Iraq. Written through the unique lens of a British steamship purser with a rich family history and connections in the area, these texts provide a unique insight into a locale on which there exists minimal literature for this time period. The goals for this digital river map project is to preserve the geographical information along the 19-century Tigris River, document the key locations in the records of his everyday affairs, and provide interactive experience for people to learn about this project. The audiences of this digital geography project include historians, researchers, educators, students, and general public. It can be used as reference materials for researchers to compare the historical geography, as a tool for students to learn historical knowledge, and as an information hub make the valuable material available for anyone who is interested.  
+
+### The Structure of the Map
+
+This project involves these elements: the digitalized baseman, a smart dashboard, and markers of the locations. The base of this river map was made from a geo-referenced scanned map. The reason for overlaying scanned historical maps onto the base map, instead of mapping the locations directly on the base map provided by modern platforms is to restore the landform of Tigris River as much as possible. The scanned map serves as a much better reference for the purpose of this project because  lot of the locations were named differently in the 19 century or became nonexistent in the present time, so. The digital river map utilized smart dashboard to responsively present detailed information for chosen locations. The markers on the map label the locations appeared in the diaries. The complete list of locations is much more than what showed on the map. More locations are wait to be added, as well as the descriptions. onto serving details for the locations marks on the map.
+
+### Data Collection
+
+The location information used in this project was extracted from the diaries transcriptions done by the transcription team of Svoboda Diaries Project. The list of locations were prepared by Addie Perkins, Sarah Yamaguchi, and  Camille Cole. The additional description for locations were provided by Bret Windhauser. The scanned historical map of Ottoman Empire in the 19 century was retrieved from the map archive made by Professor Walter G. Andrews. 
+
+### Systematic Architecture
+
