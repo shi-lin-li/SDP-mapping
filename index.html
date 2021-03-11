@@ -25,9 +25,10 @@
                 <h1>Travel Journal of Joseph Svoboda</h1>
             </div>
             <p id="placename">Ottoman Iraq - 19th Century</p>
+            <p id="alt_name">(Name appeared in the diaries)</p>
             <div id="count" class="card">
                 <h3 id="desc">Description</h5>
-                <p id="county-count">Here are some description for the locations.</p>
+                <p id="description">Here are some description for the locations.</p>
             </div>
         </div>
         <!-- main window/map -->
@@ -128,15 +129,18 @@
         function clickFeature(e) {
             L.DomEvent.stopPropagation(e);
             $("#placename").text(e.target.feature.properties.Name);
-            $("#county-count").text(e.target.feature.properties.Desc);
+            $("#description").text(e.target.feature.properties.Desc);
+            $("#alt_name").text("In the diaries: " + e.target.feature.properties.Diaries);
+
         }
         
         // 6.6 bind the onMapClick function to the mymap object.
         map.on('click', onMapClick);
         // when click on any place on the map expect the counties layer, the text on the sidebar will be reset to the total number of WA.
         function onMapClick(e) {
-            $("#placename").text("Location Name");
-            $("#county-count").text("Information about the location");
+            $("#placename").text("Iraq");
+            $("#description").text("Information about the location");
+            $("#alt_name").text("In the diaries: Ottoman Empire")
         }
 
         function pop_Locations_3(feature, layer) {
@@ -203,7 +207,7 @@
             },
         });
         bounds_group.addLayer(layer_Locations_3);
-        map.addLayer(layer_Locations_3);
+        // map.addLayer(layer_Locations_3);
         setBounds();
         L.ImageOverlay.include({
             getBounds: function () {

@@ -22,13 +22,19 @@
             font-family: 'Georgia', sans-serif;
         }
 
+        #alt_name {
+            font-size: 18px;
+            font-family: 'Georgia', sans-serif;
+            color:#8fc1d4
+        }
+
         #desc {
             text-align: left;
             color: lightgray;
             font-size: 18px;
             font-weight: bold;
         }
-        #county-count {
+        #description {
             margin:0;
             text-align: left;
             color: lightgray;
