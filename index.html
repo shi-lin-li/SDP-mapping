@@ -107,23 +107,23 @@
                         e.target._eventParents[i].resetStyle(e.target);
                     }
                 },
-                click: clickFeature,
+                // click: clickFeature,
                 mouseover: highlightFeature,
             });
-            // var popupContent = '<table>\
-            //         <tr>\
-            //         </tr>\
-            //         <tr>\
-            //             <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
-            //         </tr>\
-            //         <tr>\
-            //             <td colspan="2"><strong>Current</strong><br />' + (feature.properties['Current'] !== null ? autolinker.link(feature.properties['Current'].toLocaleString()) : '') + '</td>\
-            //         </tr>\
-            //         <tr>\
-            //             <td colspan="2"><strong>In diary</strong><br />' + (feature.properties['In diary'] !== null ? autolinker.link(feature.properties['In diary'].toLocaleString()) : '') + '</td>\
-            //         </tr>\
-            //     </table>';
-            // layer.bindPopup(popupContent, {maxHeight: 400});
+            var popupContent = '<table>\
+                    <tr>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Current</strong><br />' + (feature.properties['Current'] !== null ? autolinker.link(feature.properties['Current'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>In diary</strong><br />' + (feature.properties['In diary'] !== null ? autolinker.link(feature.properties['In diary'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
         function clickFeature(e) {
