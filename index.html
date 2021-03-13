@@ -8,6 +8,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
         <style>
         html, body, #map {
             width: 100%;
@@ -113,7 +114,12 @@
         // 6. Map relevant operations
         // 6.1 create a location layer
             layer_locations = L.geoJSON(datasets[0], {
-            onEachFeature: locations_events
+                onEachFeature: locations_events
+                // pointToLayer: function (feature, latlng) {
+                //     return L.Marker(latlng, {
+                //         icon: L.divIcon({className: 'fas fa-search-location'})
+                //     });
+                // }
             }).addTo(map);
 
         });
