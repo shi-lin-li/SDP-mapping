@@ -23,13 +23,21 @@
         <!-- sidebar -->
         <div id="info">
             <div id="title">
-                <h1>Travel Journal of Joseph Svoboda</h1>
+                <h1>River Map for Svoboda's Diaries</h1>
+                <span><a href="https://github.com/shi-lin-li/SDP-mapping" target="_blank"><i class="fa fa-github-square"></i></a></span>
+                <span><a href="https://www.svobodadiariesproject.org/" target="_blank"><i class="fa fa-safari"></i></a></span>
+                <span><a href="https://twitter.com/SvobodaDiaries" target="_blank"><i class="fa fa-twitter-square"></i></a></span>
             </div>
             <p id="placename">Ottoman Iraq - 19th Century</p>
             <p id="alt_name">(Name appeared in the diaries)</p>
             <div id="count" class="card">
                 <h3 id="desc">Description</h5>
-                <p id="description">Here are some description for the locations.</p>
+                <p id="description">(Click one of the locations for more information!) <br> This map records the locations in Svoboda's Diaries. The diaries capture over 40 years of trade on the Tigris, life, politics, and the landscape of Ottoman Iraq through the perspective of Joseph Svoboda as a British steamship purser with a rich family history and local connections.</p>
+            </div>
+            <div id="footer">
+                <p id="acknowlegdement">
+                    This project is a subproject under <b>Svoboda Diaries Project</b>. If you want to learn more about the main project and look at the original diaries, check out the <a href="https://www.svobodadiariesproject.org">project website</a>.
+                </p>
             </div>
         </div>
         <!-- main window/map -->
@@ -69,7 +77,7 @@
             zoomControl:true, maxZoom:22, minZoom:5
         }).fitBounds([[29.642671989027207,41.825057647292226],[35.343067849258446,51.85570280494848]]);
         var hash = new L.Hash(map);
-        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a> &middot; <a href="https://d3js.org">D3</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
@@ -79,7 +87,7 @@
         var layer_GoogleRoad_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
             pane: 'pane_GoogleRoad_0',
             opacity: 1.0,
-            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
+            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Base Map ©2015 Google</a>',
             minZoom: 5,
             maxZoom: 15,
             minNativeZoom: 0,
@@ -114,12 +122,15 @@
         // 6. Map relevant operations
         // 6.1 create a location layer
             layer_locations = L.geoJSON(datasets[0], {
-                onEachFeature: locations_events
-                // pointToLayer: function (feature, latlng) {
-                //     return L.Marker(latlng, {
-                //         icon: L.divIcon({className: 'fas fa-search-location'})
-                //     });
-                // }
+                attribution: '| <a href="https://www.svobodadiariesproject.org" target="_blank">Location Data & Scanned Maps ©Svoboda Diaries Project</a> | Made By Linli Shi',
+                onEachFeature: locations_events,
+                pointToLayer: function (feature, latlng) {
+                    var context = {
+                        feature: feature,
+                        variables: {}
+                    };
+                    return L.shapeMarker(latlng, style_Locations_3_0(feature));
+                },
             }).addTo(map);
 
         });
@@ -145,7 +156,7 @@
         // when click on any place on the map expect the counties layer, the text on the sidebar will be reset to the total number of WA.
         function onMapClick(e) {
             $("#placename").text("Iraq");
-            $("#description").text("Information about the location");
+            $("#description").text("This map records the locations in Svoboda's Diaries. The diaries capture over 40 years of trade on the Tigris, life, politics, and the landscape of Ottoman Iraq through the perspective of Joseph Svoboda as a British steamship purser with a rich family history and local connections.");
             $("#alt_name").text("In the diaries: Ottoman Empire")
         }
 
@@ -180,7 +191,7 @@
         function style_Locations_3_0() {
             return {
                 pane: 'pane_Locations_3',
-                shape: 'diamond',
+                shape: 'circle',
                 radius: 8.8,
                 opacity: 1,
                 color: 'rgba(50,87,128,1.0)',
@@ -190,7 +201,7 @@
                 weight: 2.0,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(72,123,182,1.0)',
+                fillColor: 'rgba(87, 95, 200,1.0)',
                 interactive: true,
             }
         }

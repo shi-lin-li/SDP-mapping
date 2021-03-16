@@ -6,7 +6,7 @@
             top: 1%;
             bottom: 1%;
             left: .5%;
-            padding: 40px 15px 900px 15px;
+            padding: 40px 15px 800px 15px;
             background: #3c434b;
             color: white;
           
@@ -16,6 +16,13 @@
             font-size: 20px;
             font-family: 'Georgia', sans-serif;
         }
+
+        #title span {
+            font-size: 18px;
+            float: right;
+            margin-right: 10px;
+        }
+          
 
         #placename {
             font-size: 22px;
@@ -33,13 +40,34 @@
             color: lightgray;
             font-size: 18px;
             font-weight: bold;
+            font-family: 'Trebuchet MS', sans-serif;
         }
+
         #description {
             margin:0;
             text-align: left;
             color: lightgray;
             font-size: 17px;
+            font-family: 'Trebuchet MS', sans-serif;
         }  
+
+        #footer {
+            margin-top: 130px;
+            margin-right: 25px;
+            font-size: 15px;
+            line-height: 150%;
+            padding: 30px 15px 16px 15px;
+            position: absolute;
+            top: 60%;
+            color: lightgray;
+            background: #47528f;
+        }
+
+        /* #acknowlegdement {
+            color: lightgray;
+            font-size: 15px;
+            font-family: 'Times New Roman', sans-serif;
+        } */
 
         #map {
             background-color: #ffffff
